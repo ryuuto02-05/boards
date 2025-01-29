@@ -1,0 +1,27 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'siri/css/style.css' %}"> 
+</head>
+<body class="main">
+    <div class="ma">
+        <h1 class="s">しりとりゲーム！</h1>
+        <hr>
+        
+        <form action="{% url 'siri:create' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="title">
+            <input type="submit" value="解答">
+        </form>
+
+       {% for siri in all_siri %}
+       <ul>
+            <li>
+                {{ siri.title }}
+            </li>
+       </ul>
+       {% endfor %}
+    </div>
+    <div class="sisu">
+        
+    </div>
+</body>
