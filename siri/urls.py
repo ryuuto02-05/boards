@@ -8,4 +8,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("point/", views.point, name="point"),
     path("create/", views.create, name="create"),
+    path("delete/<int:siri_id>", views.delete, name="delete"),
 ]

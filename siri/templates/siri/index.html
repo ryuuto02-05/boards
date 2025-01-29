@@ -13,15 +13,15 @@
             <input type="submit" value="解答">
         </form>
 
+
        {% for siri in all_siri %}
        <ul>
             <li>
                 {{ siri.title }}
+                <a href="{% url 'siri:delete' siri.id %}">削除</a>
             </li>
        </ul>
        {% endfor %}
     </div>
-    <div class="sisu">
-        
-    </div>
+    
 </body>

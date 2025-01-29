@@ -30,3 +30,10 @@ def create(request):
 
         new_siri.save()
     return HttpResponseRedirect(reverse("siri:index"))
+
+
+def delete(request, siri_id):
+    target_siri = models.Siri.objects.get(id=siri_id)
+    target_siri.delete()
+    
+    return HttpResponseRedirect(reverse("siri:index"))
