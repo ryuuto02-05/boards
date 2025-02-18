@@ -3,17 +3,21 @@
     <link rel="stylesheet" href="{% static 'siri/css/style.css' %}"> 
 </head>
 <body class="main">
+    <ul class="nav me-auto">
+        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link link-body-emphasis px-2 active"
+                aria-current="page">Home</a></li>
+    </ul>
     <div class="ma">
         <h1 class="s">しりとりゲーム！</h1>
+        <div class="s">最初にしりとりと入力してね</div>
         <hr>
         
         <form action="{% url 'siri:create' %}" method="post">
             {% csrf_token %}
+            <!-- <input type="text" name="title" value="しりとり"> -->
             <input type="text" name="title">
             <input type="submit" value="解答">
         </form>
-
-
        {% for siri in all_siri %}
        <ul>
             <li>
@@ -23,5 +27,4 @@
        </ul>
        {% endfor %}
     </div>
-    
 </body>
