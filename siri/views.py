@@ -19,14 +19,6 @@ def point(request):
     return render(request, "siri/index2.html", context)
 
 
-# def create(request):
-
-#     new_siri = models.Siri()
-#     new_siri.title = request.POST.get("title")
-#     new_siri.save()
-#     return HttpResponseRedirect(reverse("siri:index"))
-
-
 def create(request):
     title = request.POST.get("title")
 
@@ -36,7 +28,6 @@ def create(request):
             "siri/index.html",
             {
                 "all_siri": models.Siri.objects.all(),
-                "error": "日本語のみ入力してください！",
             },
         )
 
@@ -45,10 +36,6 @@ def create(request):
         if title != "しりとり":
             return HttpResponseRedirect(reverse("siri:index"))
     else:
-        # head == last
-        # new_siri = models.Siri()
-        # new_siri.title = title
-        # new_siri.finished = False
         last_word = last_siri.title
         last = last_word[-1]
         head = title[0]
@@ -60,15 +47,6 @@ def create(request):
     new_siri.save()
 
     return HttpResponseRedirect(reverse("siri:index"))
-
-    # last_siri = models.Siri.objects.order_by("-id").first()
-    # last_word = last_siri.title
-
-    # last = last_word[-1]
-    # head = title[0]
-
-    # new_siri.save()
-    # return HttpResponseRedirect(reverse("siri:index"))
 
 
 def delete(request, siri_id):
